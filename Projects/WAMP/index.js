@@ -36,7 +36,7 @@ function popout()
     }
     //checks if the random number is not equal to 0 
     if (moremath != 0)
-    {   //sets called to false
+    {   //sets called to false if the next random number is not 0
         called0 = false
     }
     
@@ -54,7 +54,7 @@ function popout()
 
 
     if (moremath != 1)
-    {
+    {   //sets called to false if the next random number is not 1
         called1 = false
     }
         //if statements check to see if the random number is equal to a corresponding number
@@ -69,7 +69,7 @@ function popout()
 
     }
     if (moremath != 2)
-    {
+    {   //sets called to false if the next random number is not 2
         called2 = false
     }
         //if statements check to see if the random number is equal to a corresponding number
@@ -84,7 +84,7 @@ function popout()
 
     }
     if (moremath != 3)
-    {
+    {   //sets called to false if the next random number is not 3
         called3 = false
     }
         //if statements check to see if the random number is equal to a corresponding number
@@ -98,7 +98,7 @@ function popout()
         }
     }
     if (moremath != 4)
-    {
+    {   //sets called to false if the next random number is not 4
         called4 = false
     }
         //if statements check to see if the random number is equal to a corresponding number
@@ -113,63 +113,67 @@ function popout()
 
     }
     if (moremath != 5)
-    {
+    {   //sets called to false if the next random number is not 5
         called5 = false
     }
 }
 //creates functions and has onclick onto button in html to set the mode to true and enables the start button while disabled the difficulty buttons
 function teasy()
 {
-   easy = true
-   document.getElementById('start').disabled = false; 
-   document.getElementById('easy').disabled = true;
-   document.getElementById('med').disabled = true;
-   document.getElementById('hard').disabled = true;
+   easy = true// sets easy to true
+   document.getElementById('start').disabled = false;//sets the start button to enabled
+   document.getElementById('easy').disabled = true; //sets easy button to disabled
+   document.getElementById('med').disabled = true;  //sets medium button to disabled
+   document.getElementById('hard').disabled = true; //sets medium button to disabled
 }
 function mediumm()
 {
     med = true
-    document.getElementById('start').disabled = false; 
-    document.getElementById('easy').disabled = true;
-    document.getElementById('med').disabled = true;
-    document.getElementById('hard').disabled = true;
+    document.getElementById('start').disabled = false;//sets the start button to enabled
+    document.getElementById('easy').disabled = true; //sets easy button to disabled
+    document.getElementById('med').disabled = true; //sets medium button to disabled
+    document.getElementById('hard').disabled = true; //sets hard button to disabled
 }
 function hardd()
 {
     hard = true
-    document.getElementById('start').disabled = false; 
-    document.getElementById('easy').disabled = true;
-    document.getElementById('med').disabled = true;
-    document.getElementById('hard').disabled = true;
+    document.getElementById('start').disabled = false;//sets the start button to enabled
+    document.getElementById('easy').disabled = true; //sets easy button to disabled
+    document.getElementById('med').disabled = true; //sets medium button to disabled
+    document.getElementById('hard').disabled = true;//sets hard button to disabled
 }
 
 
 
 //creates a function that has if statements checking if a certain mode is true and if it is starts 2 timers one that starts a countdown and the other that makes the mole move
 function start()
-{
+{   //if easy is equal to true
     if (easy == true)
-    {
+    { //make an interval to run a function every second
         help = setInterval(timeoutandstuff,1000)
+        //make an interval to run a function every 1500ms
         fint = setInterval(popout, 1500)
-        med = false
-        hard = false
-        document.getElementById('start').disabled = true;
+        med = false// makes medium false
+        hard = false//makes hard false
+        document.getElementById('start').disabled = true; // enables the start button
 
         
         
     }
+    //if med is equal to true
     if (med == true)
-    {
+    {   //make an interval to run a function every second
         help = setInterval(timeoutandstuff,1000)
+        //make an interval to run a function every second
         ouch = setInterval(popout, 1000)
-        document.getElementById('start').disabled = true;
+        document.getElementById('start').disabled = true;// makes the start button enabled
     }
-    if (hard == true)
-    {
+    if (hard == true)// if hard is true
+    { //make an interval to run a function every second
         help = setInterval(timeoutandstuff,1000)
-        notouch = setInterval(popout, 450)
-        document.getElementById('start').disabled = true;
+        //then make another interval to run a function every 500 ms
+        notouch = setInterval(popout, 500)
+        document.getElementById('start').disabled = true;// enables the start button
     }
 }
 
@@ -182,16 +186,16 @@ function timeoutandstuff()
     if (funnytimerhaha == 0)
         {
 
-            document.getElementById('start').disabled = true;
-            document.getElementById('easy').disabled = false;
-            document.getElementById('med').disabled = false;
-            document.getElementById('hard').disabled = false;
-            funnytimerhaha = 30
-            hitamount = 1
-            clearInterval(help)
-            clearInterval(fint)
-            clearInterval(ouch)
-            clearInterval(notouch)
+            document.getElementById('start').disabled = true;//enables the start button
+            document.getElementById('easy').disabled = false;//disables the easy button
+            document.getElementById('med').disabled = false;//disables the medium button
+            document.getElementById('hard').disabled = false;// disables the hard button
+            funnytimerhaha = 30//resets the timer
+            hitamount = 0//resets the hit counter
+            clearInterval(help)//clears the timers
+            clearInterval(fint)//clears the timers
+            clearInterval(ouch)//clears the timers
+            clearInterval(notouch)//clears the timers
             
         }
     })
@@ -201,49 +205,48 @@ function timeoutandstuff()
 //6 individual functions that checks if the mole was clicked and whether what the user clicked was a mole
 function hitcount0()
 {
-    if (document.getElementById('zero').src.match('img/2.png') )
+    if (document.getElementById('zero').src.match('img/2.png') )//if zero matches the mole image then
     {
-        document.getElementById('hits').innerHTML = hitamount++;
-        console.log('hello world')
+        document.getElementById('hits').innerHTML = hitamount++;//add hits
     }
 }
 function hitcount1()
 {
-    if (document.getElementById('one').src.match('img/2.png'))
+    if (document.getElementById('one').src.match('img/2.png'))//if one matches the mole image then
     {
-        document.getElementById('hits').innerHTML = hitamount++;
-        console.log('hello world')
+        document.getElementById('hits').innerHTML = hitamount++;//add hits
+
     }
 }
 function hitcount2()
 {
-    if (document.getElementById('two').src.match('img/2.png'))
+    if (document.getElementById('two').src.match('img/2.png'))// if two matches the mole image then
     {
-        document.getElementById('hits').innerHTML = hitamount++;
-        console.log('hello world')
+        document.getElementById('hits').innerHTML = hitamount++;// add hits
+
     }
 }
 function hitcount3()
 {
-    if (document.getElementById('three').src.match('img/2.png'))
+    if (document.getElementById('three').src.match('img/2.png'))//if three matches the mole image then
     {
-        document.getElementById('hits').innerHTML = hitamount++;
-        console.log('hello world')
+        document.getElementById('hits').innerHTML = hitamount++;//add hits
+ 
     }
 }
 function hitcount4()
 {
-    if (document.getElementById('four').src.match('img/2.png'))
+    if (document.getElementById('four').src.match('img/2.png'))//if four matches the mole image then
     {
-        document.getElementById('hits').innerHTML = hitamount++;
-        console.log('hello world')
+        document.getElementById('hits').innerHTML = hitamount++;//add hits
+
     }
 }
 function hitcount5()
 {
-    if (document.getElementById('five').src.match('img/2.png'))
+    if (document.getElementById('five').src.match('img/2.png'))//if five matches the mole image then
     {
-        document.getElementById('hits').innerHTML = hitamount++;
-        console.log('hello world')
+        document.getElementById('hits').innerHTML = hitamount++;//add hits
+
     }
 }
