@@ -15,6 +15,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>BlackJack </title>
+
+    <style>
+      .img
+      {
+        max-width: 100px;
+      }
+    </style>
   </head>
 
   <head>
@@ -39,17 +46,20 @@
       </div>
     </nav>
 
-    <img src="" id="dealer1">
-    <img src="" id="dealer2">
-    <img src="" id="dealer3">
-    <img src="" id="dealer4">
-
-    <img src="" id="player1">
-    <img src="" id="player2">
-    <img src="" id="player3">
-    <img src="" id="player4">
+<p class="mt-3 h5 text-muted">Dealer</p>    <img src="img/back.png" id="dealer1" class="img">
+    <img src="img/back.png" id="dealer2" class="img">
+    <img src="" id="dealer3" class="img">
+    <img src="" id="dealer4" class="img">
+    <p id="dvalueocards" class="mt-3 h5 text-muted"></p>
+<br>
+<p class="mt-3 h5 text-muted">Player</p>    
+    <img src="img/back.png" id="player1" class="img">
+    <img src="img/back.png" id="player2" class="img">
+    <img src="" id="player3" class="img">
+    <img src="" id="player4" class="img">
+    <img src="" id="player5" class="img">
 
     <p id="valueocards" class="mt-3 h5 text-muted"></p>
-    <button onclick="randomcards()">Start game</button> <button onclick="hitMe(variable1,local = true)">hit Me</button>
+    <button id="startgame" onclick="randomcards()">Start game</button> <button id="hitme" onclick="hitMe(variable1,local = true)">hit Me</button><button id="stand" onclick="stand()">stand</button>
 </body>
 </html>

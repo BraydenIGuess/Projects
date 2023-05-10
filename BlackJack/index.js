@@ -1,11 +1,4 @@
-dealer1 = false
-dealer2 = false
-dealer3 = false
-dealer4 = false
-player1 = false
-player2 = false
-player3 = false
-player4 = false
+dealercard = 1 
 ran = false
 var local = false
 player = 1
@@ -18,13 +11,29 @@ values2 = ["11","11","11","11","10","10","10","10","10","10","10","10","10","10"
 
 
 
-function randomcards(sum)
+function randomcards(sum, fdealerv)
 {
     random = Math.floor(Math.random() * 51)
     random2 = Math.floor(Math.random() * 14)
     if(ran == false)
-    {
 
+    {
+        dealerdom = Math.floor(Math.random() * 51)
+        dealerdomfacecard = Math.floor(Math.random() * 14)
+
+        if(dealerdom >= 36)
+        {
+            document.getElementById("dealer2").src = "img/"+values2[dealerdomfacecard]+".png"
+            fdealerv = values2[dealerdomfacecard]
+
+
+        }
+        else
+        {
+            document.getElementById("dealer2").src = "img/"+values[dealerdom]+".png"
+            fdealerv = values2[dealerdomfacecard]
+        }
+        player = 1
         if(random >= 36)
         {
             
@@ -44,6 +53,7 @@ function randomcards(sum)
                  sum = +value1 + +value2
                  console.log(sum+", 1")
                  hitMe(sum = +value1 + +value2)
+                 player++
             }
 
 
@@ -54,6 +64,7 @@ function randomcards(sum)
                  sum =  +value1 + +value2
                  console.log(sum+", 2")
                  hitMe(sum = +value1 + +value2)
+                 player++
                 
             }
 
@@ -69,6 +80,7 @@ function randomcards(sum)
             value1 = values[random]
             randomer = Math.floor(Math.random() * 51)
 
+
             if(randomer >= 36)
             {
                 randomer2 = Math.floor(Math.random() * 14)
@@ -77,6 +89,7 @@ function randomcards(sum)
                sum = +value1 + +value2
                console.log(sum+", 3")
                hitMe(sum = +value1 + +value2)
+               player++
             }
 
             else
@@ -87,6 +100,7 @@ function randomcards(sum)
                 sum = +value1 + +value2
                 console.log(sum+", 4")
                 hitMe(sum = +value1 + +value2)
+                player++
                 
             }
 
@@ -96,9 +110,20 @@ function randomcards(sum)
         }
      
     }// end of ran
+    else
+    {
+        document.getElementById("player1").src = ""
+        document.getElementById("player2").src = ""
+        document.getElementById("player3").src = ""
+        document.getElementById("player4").src = ""
+        ran = false
+        document.getElementById("hitme").disabled = false
+        document.getElementById("stand").disabled = false
+        
+        randomcards()
+    }
     
 variable1 = sum
-player++
 }
 
 function hitMe(variable1, local)
@@ -108,35 +133,47 @@ function hitMe(variable1, local)
     {
     randomest = Math.floor(Math.random() * 51)
     randomest2 = Math.floor(Math.random() * 14)
+    console.log(randomest)
 
         if(randomest >= 36)
         {
         console.log(variable1)
+        console.log(player)
         document.getElementById("player"+player).src = "img/"+face_cards[randomest2]
         sumation = +variable1 + +values[randomest2]
         console.log(sumation)
+        player++
         if(sumation > 21)
         {
             document.getElementById("valueocards").innerHTML = "you busted!"
+            document.getElementById("hitme").disabled = true
+            document.getElementById("stand").disabled = true
         }            
+        else
+        {
+            document.getElementById("valueocards").innerHTML= "you busted!"
+        }
         }
         else
         {
             console.log(variable1+" notfacecard")
             console.log(player)
+
             document.getElementById("player"+player).src = "img/"+randomest+".png"        
             sumation = +variable1 + +values[randomest]
             player++
 
+
             if(sumation > 21)
             {
-                document.getElementById("valueocards").innerHTML = sumation
+                document.getElementById("valueocards").innerHTML = "you busted!"
                 console.log("lol")
+                document.getElementById("hitme").disabled = true
+                document.getElementById("stand").disabled = true
             }   
             else{
                 console.log(player)
                 document.getElementById("valueocards").innerHTML = sumation
-                player++
             }      
         }// end of else statement
 
@@ -147,3 +184,22 @@ function hitMe(variable1, local)
 }
 
 
+function stand(sum, fdealerv)
+{
+    dealerdomshowncard = Math.floor(Math.random() * 51)
+    dealerdomsface = Math.floor(Math.random() * 14)
+    if(dealerdomshowncard >= 36)
+    {
+        
+        document.getElementById("dealer1").src = "img/"+values2[dealerdomsface]+".png"
+        console.log(fdealerv)
+    }
+    else
+    {
+        document.getElementById("dealer1").src = "img/"+dealerdomshowncard+".png"
+        document.getElementById("dvalueocards").innerHTML = values[dealerdomshowncard]
+
+    }
+
+
+}
