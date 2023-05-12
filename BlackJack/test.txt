@@ -1,0 +1,42 @@
+ if(local == true)
+    {
+    randomest = Math.floor(Math.random() * 51)
+    randomest2 = Math.floor(Math.random() * 15)
+    console.log(randomest)
+
+        if(randomest >= 36)
+        {
+        console.log(variable1)
+        console.log(player)
+        document.getElementById("player"+player).src = "img/"+face_cards[randomest2]
+        sumation = +variable1 + +values[randomest2]
+        console.log(sumation)
+        player++
+        if(sumation > 21)
+        {
+            document.getElementById("valueocards").innerHTML = "you busted!"
+            document.getElementById("hitme").disabled = true
+            document.getElementById("stand").disabled = true
+        }            
+        else
+        {
+            document.getElementById("valueocards").innerHTML= "you busted!"
+        }
+        }
+        else
+        {
+            console.log(variable1+" notfacecard")
+            console.log(player)
+
+            document.getElementById("player"+player).src = "img/"+randomest+".png"        
+            sumation = +variable1 + +values[randomest]
+            player++
+
+
+            if(sumation > 21)
+            {
+                document.getElementById("valueocards").innerHTML = "you busted!"
+                console.log("lol")
+                document.getElementById("hitme").disabled = true
+                document.getElementById("stand").disabled = true
+            }   
