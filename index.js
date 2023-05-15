@@ -1,3 +1,9 @@
+// Brayden Nino
+// Platt technical high school
+// 05/15/23
+
+
+// defining variables
 dealercard = 1 
 ran = false
 var local = false
@@ -14,9 +20,13 @@ function randomcards(sum, dvalue)
 {
     random = Math.floor(Math.random() * 51)
     random2 = Math.floor(Math.random() * 15)
+    document.getElementById("hitme").disabled = false
+    document.getElementById("stand").disabled = false  
+    document.getElementById("startgame").disabled = true  
     if(ran == false)
 
     {
+
         dealerdom = Math.floor(Math.random() * 51)
         dealerdomfacecard = Math.floor(Math.random() * 15)
 
@@ -50,6 +60,8 @@ function randomcards(sum, dvalue)
 
             if(random >= 36)
             {
+                // random for second card
+
                 random2 = Math.floor(Math.random() * 15)
                 document.getElementById("player"+player).src = "img/"+face_cards[random2]
                 value2 = values2[random2]
@@ -58,6 +70,7 @@ function randomcards(sum, dvalue)
 
                  player++
                  ran = true
+                document.getElementById("valueocards").innerHTML = sum
             }
 
 
@@ -69,6 +82,7 @@ function randomcards(sum, dvalue)
                 ran = true
 
                  player++
+                document.getElementById("valueocards").innerHTML = sum
                 
             }
             if(sum == 21)
@@ -104,6 +118,7 @@ function randomcards(sum, dvalue)
                 value2 = values[randomer]
                 sum = +value1 + +value2
                 player++
+
                 
             }
 
@@ -125,19 +140,23 @@ function randomcards(sum, dvalue)
         document.getElementById("dealer3").src = ""
         document.getElementById("dealer4").src = ""
         ran = false
+        player = 1
+        dealercard = 1
         document.getElementById("hitme").disabled = false
         document.getElementById("stand").disabled = false
         
         randomcards()
     }
     
-variable1 = sum
-dealervalue = dvalue
+    sum = sum
+    variatedsum = sum
+    dealervalue = dvalue
+    console.log(sum)
 }
 
-function hitMe(variable1, local)
+function hitMe(sum, local)
 {
-
+    console.log(variatedsum)
     if(local == true)
     {
     randomest = Math.floor(Math.random() * 51)
@@ -146,10 +165,9 @@ function hitMe(variable1, local)
 
         if(randomest >= 36)
         {
-        console.log(variable1)
         console.log(player)
         document.getElementById("player"+player).src = "img/"+face_cards[randomest2]
-        sumation = +variable1 + +values[randomest2]
+        sumation = +variatedsum + +values[randomest2]
         console.log(sumation)
         player++
         if(sumation > 21)
@@ -161,11 +179,12 @@ function hitMe(variable1, local)
         }
         else
         {
-            console.log(variable1+" notfacecard")
+            console.log(variatedsum+" notfacecard")
             console.log(player)
 
             document.getElementById("player"+player).src = "img/"+randomest+".png"        
-            sumation = +variable1 + +values[randomest]
+            sumation = +variatedsum + +values[randomest]
+            document.getElementById("valueocards").innerHTML = sumation
             player++
 
 
@@ -188,9 +207,10 @@ function hitMe(variable1, local)
 }
 
 
-function stand(dvalue, stand)
+function stand(dvalue, stand1)
 {
-    if(stand == true)
+    document.getElementById("startgame").disabled = false
+    if(stand1 == true)
     {
         document.getElementById("hitme").disabled = true
         document.getElementById("stand").disabled = true
@@ -222,7 +242,7 @@ function stand(dvalue, stand)
                 console.log(unshownvalue)
                 console.log(dealervalue)
                 document.getElementById("dvalueocards").innerHTML = dealervalue1
-                stand()
+
             }
             else
             {
@@ -230,13 +250,13 @@ function stand(dvalue, stand)
                 unshownvalue1 = +values[dealerdomshowncard1]
                 dealervalue1 = +dealervalue + unshownvalue1
                 document.getElementById("dvalueocards").innerHTML = dealervalue1
-                stand()
+                stand(dvalue, stand)
             }
 
     }
     else
     {
-        if(dealervalue > variable1)
+        if(dealervalue > sum)
         {
         if(dealervalue > 21)
         {
@@ -250,13 +270,16 @@ function stand(dvalue, stand)
     }
         else
         {
-           if(dealervalue > 21)
+           if(sum > 21)
            {
-            document.getElementById("valueocards").innerHTML = "You Busted!"
+    document.getElementById("valueocards").innerHTML = "You Busted!"
            }
            else
            {
             document.getElementById("valueocards").innerHTML = "You Won!"
+            document.getElementById("hitme").disabled = true
+            document.getElementById("stand").disabled = true
+            document.getElementById("startgame").disabled = false
            }
         }
     }
@@ -284,6 +307,8 @@ function stand(dvalue, stand)
             console.log(unshownvalue1)
             console.log(dealervalue1)
             console.log(dealervalue)
+            
+
             }
             else
             {
@@ -300,7 +325,7 @@ function stand(dvalue, stand)
         }
         else
         {
-            if(dealervalue > variable1)
+            if(dealervalue > sum)
             {
                 if(dealervalue > 21)
                 {
@@ -314,16 +339,18 @@ function stand(dvalue, stand)
             }
             else
             {
-                if(variable1 > 21)
+                if(sum > 21)
                 {
                     document.getElementById("valueocards").innerHTML = "You Busted!"
                 }
                 else
                 {
                     document.getElementById("valueocards").innerHTML = "You Won!"
+
                 }
             }
         }
+
 
     }
 
